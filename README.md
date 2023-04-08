@@ -1,6 +1,11 @@
 # :joystick: apk.sh
 apk.sh is a Bash script that makes reverse engineering Android apps easier, automating some repetitive tasks like pulling, decoding, rebuilding and patching an APK.
 
+# Gelormini OSX Tweaks
+Requirements:
+ - apktool
+ - standard Android SDK installation. Default path (`$ANDROID_HOME`)
+ 
 
 ## Features
 apk.sh basically uses [apktool](https://ibotpeaches.github.io/Apktool/) to disassemble, decode and rebuild resources and some bash to automate the [frida](https://https://frida.re/) gadget injection process.
