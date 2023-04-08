@@ -54,10 +54,10 @@ print_(){
 print_ "[*] DEBUG is TRUE"
 
 APKTOOL_VER="2.7.0"
-APKTOOL_PATH="$APK_SH_HOME/apktool_$APKTOOL_VER.jar"
+APKTOOL_PATH="/opt/homebrew/bin/apktool"
 
 BUILDTOOLS_VER="33.0.1"
-SDK_ROOT="$APK_SH_HOME/sdk_root"
+SDK_ROOT="$ANDROID_HOME"
 BUILD_TOOLS="$SDK_ROOT/build-tools/$BUILDTOOLS_VER"
 
 if [ ! -d "$BUILD_TOOLS" ]; then
@@ -170,7 +170,7 @@ exit_if_not_exist(){
 apk_decode(){
 	APK_NAME="$1"
 	DECODE_CMD_OPTS="$2"
-	DECODE_CMD_START="java -jar $APKTOOL_PATH d"
+	DECODE_CMD_START="$APKTOOL_PATH d"
 	DECODE_CMD="$DECODE_CMD_START $APK_NAME $DECODE_CMD_OPTS"
 	echo -e "[>] \033[1mDecoding $APK_NAME\033[0m with $DECODE_CMD"
 	run "$DECODE_CMD"
@@ -181,7 +181,7 @@ apk_decode(){
 apk_build(){
 	APK_DIR="$1"
 	BUILD_CMD_OPTS="$2"
-	BUILD_CMD_START="java -jar $APKTOOL_PATH b -d "
+	BUILD_CMD_START="$APKTOOL_PATH b -d "
 	BUILD_CMD="$BUILD_CMD_START $APK_DIR $BUILD_CMD_OPTS"
 	APK_NAME=`echo $BUILD_CMD_OPTS | grep -Po "\-o \K.*?(?= )"`
 	if [ -z $APK_NAME ]; then
